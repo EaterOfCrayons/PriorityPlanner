@@ -1,0 +1,18 @@
+import requests
+import json
+x = "https://assignments.onenote.com/api/v1.0/edu/classes/025d58bf-b0d1-4997-bec2-c506d1623c61/assignments/5df6aad2-a848-4b76-ad85-4b456b967002?%24expand=rubric%2Ccategories%2Cresources(%24expand%3DdependentResources)%2CpostSubmitOperations%2CgradingCategory%2CsubmissionAggregates%2CgradingScheme"
+y = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtXYmthYTZxczh3c1RuQndpaU5ZT2hIYm5BdyIsImtpZCI6ImtXYmthYTZxczh3c1RuQndpaU5ZT2hIYm5BdyJ9.eyJhdWQiOiJodHRwczovL29uZW5vdGUuY29tLyIsImlzcyI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzFmZDQ2NzNmLWRmOTYtNDYyMS04NjM4LWExZDg4YzRjODVkNy8iLCJpYXQiOjE3MDgyOTE2MTQsIm5iZiI6MTcwODI5MTYxNCwiZXhwIjoxNzA4Mjk3MDQwLCJhY3IiOiIxIiwiYWlvIjoiQVRRQXkvOFdBQUFBM2x5VGNQRGVxNzVHWDdxSVRNa1NjOXRJemM5QzdhS1JTVkk4em8zbllNWXFvTFpUTi81ZGF4ek53NGdMcFFjRCIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiI1ZTNjZTZjMC0yYjFmLTQyODUtOGQ0Yi03NWVlNzg3ODczNDYiLCJhcHBpZGFjciI6IjAiLCJmYW1pbHlfbmFtZSI6IlNIQVJNQSIsImdpdmVuX25hbWUiOiJJU0hBTiIsImlwYWRkciI6IjUwLjQ2LjIzMC4yMTYiLCJuYW1lIjoiU0hBUk1BLCBJU0hBTiIsIm9pZCI6ImM3Nzc5MjVkLThjMzctNDIwMC1hMWYzLThlN2RmY2MwZTQ1MiIsIm9ucHJlbV9zaWQiOiJTLTEtNS0yMS0xMTk1ODQwOTkxLTE2MjMwODg5NzAtMTEzNjI2Mzg2MC00NTM2NzYiLCJwdWlkIjoiMTAwMzIwMDA2MUI5N0FGMSIsInJoIjoiMC5BVmdBUDJmVUg1YmZJVWFHT0tIWWpFeUYxNDQ5VFMzakstOUxuNGQ0ZGFZY0tkN3lBT3cuIiwic2NwIjoiTm90ZXMuUmVhZFdyaXRlIE5vdGVzLlJlYWRXcml0ZS5BbGwiLCJzaWduaW5fc3RhdGUiOlsia21zaSJdLCJzdWIiOiJZYWtKUjhvNk9qV1JhcTRRVkc1RmhFbVJjYkdGVmVrT09Qb3B6aVZrYmZRIiwidGlkIjoiMWZkNDY3M2YtZGY5Ni00NjIxLTg2MzgtYTFkODhjNGM4NWQ3IiwidW5pcXVlX25hbWUiOiJzLWlzaGFzaGFybWEyQGx3c2Qub3JnIiwidXBuIjoicy1pc2hhc2hhcm1hMkBsd3NkLm9yZyIsInV0aSI6InFuV0l4dF9aNkV5UWhUMXlCVU1NQUEiLCJ2ZXIiOiIxLjAifQ.f_DTSa-UtQ4WrNoBZ4zP3oxoauJYp17PC9NbwPV2hXQT0wC_8SVsD7U2RciesUc7xNTKYH0brHA06jv9i08aDYmEeWNPkxbnUJ6VQ01hbMWtN0glCJzc92MZigJUvrY5PU4J22_dOEbjcfo7RSdhVORdupIdO_kmOGGdb2wXUfaQ5fboaNrvnpGvtja9bzDI4GPcFts49etIfQe2EJvLrLaEyoIw_QF91px4mIcWma5pJZixDe_VqSOJQj718nqONNe4nhCs5uJvYH3_UNJbrDtfeldtX8YAKutPjOtXiEGk1zBuchffqxlw5yIAU7JH5VNq0rUU3mBqB214Wz3C5A"
+if __name__ == "__main__":
+    header = {
+        "Authorization":y
+    }
+
+    z = requests.get(x,headers=header)
+    cont = str(z.content)[2:-1:]
+    cont = cont.replace("\\","")
+    cont = json.loads(cont)
+    #cont = cont['value'][0]
+    if str(z) == "<Response [200]>":
+        print(cont["dueDateTime"])
+    else:
+        print("error")
