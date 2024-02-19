@@ -6,6 +6,7 @@
     <title>Priority Planner</title>
     <link rel="shortcut icon" type="image/x-icon" href="SchedgeuleIcon.ico" />
     <link rel="stylesheet" href = "style.css">
+    <script src="classdata.js" defer></script>
 </head>
 <body>
         <div class = 'classBox'>
@@ -24,25 +25,12 @@
                 </div>
                 <div class = 'classStorer'>
                     <h1 id = 'classLabel'>Classes:</h1>
-                    <script>
-                        function changeText() {
-                            let classes = [];
-                            var txt = document.getElementById('classInput').value;
-                            classes.push(txt);
-                            for (let i = 0; i < classes.length; i++) {
-                                document.getElementById("classLabel").innerHTML += (" " + classes[i]);
-                                console.log(classes[i]);
-                            }
-
-                            document.getElementById('classInput').value = "";
-
-                            return false;
-
-                        }
-
-                    </script>
                 </div>
             </form>
+            <div class = "nextButton">
+                <a href = 'addgrade.html' class = 'nextLink'>Next</a>
+            </div>
         </div>
+
 </body>
 </html>

@@ -78,6 +78,33 @@ input[type = submit] {
     font-family: 'Montserrat', sans-serif;
 }
 
+.classStorer {
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+    font-family: 'Montserrat', sans-serif;
+    background: #ddd;
+    border-radius: 25px;
+    width: 1000px;
+}
+
+.nextButton {
+    text-align: center;
+    justify-content: center;
+}
+
+.nextLink {
+    border-radius: 25px;
+    width: 100px;
+    height: 50px;
+    font-size: 30px;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    color: #ddd;
+    background-color: #333;
+    padding: 15px 15px;
+}
+
 .loginBox {
     background-color: #333;
     border-radius: 25px;
