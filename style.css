@@ -224,11 +224,15 @@ input[type = submit] {
   }
 
   .schedule th {
+    text-align: center;
+    border: 3px solid #000;
     font-weight: bold;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
   }
 
   .schedule td {
-    border: 1px solid #000;
+    border: 3px solid #000;
     text-align: center;
   }
 
