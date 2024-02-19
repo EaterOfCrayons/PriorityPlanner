@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Priority Planner</title>
     <link rel="stylesheet" href = "style.css">
-    <script src="getLoginData.js" defer></script>
+    
 </head>
 <body>
     <div class = 'loginBox'>
         <div>
             <h1 class = 'loginHeader'>Login</h1>
         </div>
-        <form action = 'getLoginData.js' method="POST">
+        <!-- <form action = 'getLoginData.js' method="POST"> -->
         <div class = "userLogin">
             <label for="username">Username:</label>
             <input
@@ -27,7 +27,7 @@
         <div class = "passLogin">
             <label for="password">Password:</label>
             <input
-            type="text"
+            type="password"
             id="password"
             name="password"
             placeholder="Password"
@@ -36,7 +36,7 @@
         </div>
         <div class="testing">
             <label id="temp">Temp</label>
-            <button onclick="getUsername()">get username</button>
+            <button onclick="convertToJson()">get json</button>
         </div>
         <br/>   
         <div class = 'submitArea'>
@@ -47,5 +47,6 @@
         </div>
         </form>
     </div>
+    <script src="getLoginData.js" defer></script>
 </body>
 </html>
