@@ -15,8 +15,11 @@
         <div class="addClasses">
             <form onsubmit="return changeText()">
                 <div class = 'inputClass'>
-                    <Label for = 'classes'>Input Class:</Label>
-                    <input type = 'text' id = 'classInput' name = 'classInput', placeholder="ex: Math" required>
+                    <Label for = 'classInput'>Input Class:</Label>
+                    <input type = 'text' id = 'classInput' name = 'classInput', placeholder="ex: Math" maxlength="10">
+                    <br>
+                    <Label for = 'gradeInput'>Input Grades:</Label>
+                    <input type = 'number' id = 'gradeInput' name = 'gradeInput', placeholder="ex: 90" required>
                 </div>
                 <br>
                 <div class = 'submitArea'>
@@ -24,11 +27,11 @@
                     <input type="button" name="button" value="Add Class" onclick="changeText()"/>
                 </div>
                 <div class = 'classStorer'>
-                    <h1 id = 'classLabel'>Classes:</h1>
+                    <h1 id = 'classLabel'>Class/Grade:</h1>
                 </div>
             </form>
             <div class = "nextButton">
-                <a href = 'addgrade.html' class = 'nextLink'>Next</a>
+                <a href = 'schedule.html' class = 'nextLink'>Next</a>
             </div>
         </div>
 
