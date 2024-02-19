@@ -13,11 +13,30 @@
         </div>
         <div class="addClasses">
             <form>
-                <Label for = 'classes'>Input Class:</Label>
-                <input type = 'text' id = 'classInput' name = 'classInput', placeholder="ex: Math" required>
+                <div class = 'inputClass'>
+                    <Label for = 'classes'>Input Class:</Label>
+                    <input type = 'text' id = 'classInput' name = 'classInput', placeholder="ex: Math" required>
+                </div>
+                <br>
                 <div class = 'submitArea'>
                     <!-- Submit button -->
-                    <input type="submit" name="submit" value="Login"/>
+                    <input type="submit" name="submit" value="Add Class" onclick="changeText()"/>
+                </div>
+                <div class = 'classStorer'>
+                    <h1 id = 'classLabel'>Classes:</h1>
+                    <script>
+                        function changeText() {
+                            classes = [];
+                            var txt = document.getElementById('classInput').value;
+                            classes.add(txt);
+                            for (let i = 0; i < length(classes); i++) {
+                                document.getElementById("classLabel").innerHTML += classes[i];
+                                System.out.println(classes[i]);
+                            }
+
+                        }
+
+                    </script>
                 </div>
             </form>
         </div>

@@ -53,6 +53,21 @@ input[type = submit] {
 
 .classBox {
     background-color: #333;
+    border-radius: 25px;
+}
+
+.inputClass {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+}
+
+.classInput {
+    padding: 6px 10px;
+    margin: 12px 10px;
+    box-sizing: border-box;
 }
 
 .classHeader {
@@ -60,6 +75,7 @@ input[type = submit] {
     text-align: center;
     justify-content: center;
     padding: 15px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .loginBox {
