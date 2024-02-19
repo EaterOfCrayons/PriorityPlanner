@@ -51,6 +51,17 @@ input[type = submit] {
     justify-content: center;
 }
 
+.classBox {
+    background-color: #333;
+}
+
+.classHeader {
+    color: white;
+    text-align: center;
+    justify-content: center;
+    padding: 15px;
+}
+
 .loginBox {
     background-color: #333;
     border-radius: 25px;
