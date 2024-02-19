@@ -1,1 +1,1 @@
-{}
+{"John": {"password": "1234", "classes": ["id1", "id2"], "grades": [85, 90], "assignments": [{"1": "skibidi"}], "assignment_weights": [{"1": 0.5}]}}

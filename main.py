@@ -1,14 +1,15 @@
 import requests
 import json
 
-url = "http://localhost:5000/api/student"
+url = "http://localhost:5000/api/student/create-account"
 new_student = {
-    "name": "david",
+    "name": "John",
     "account": {
-        "password": 1234,
+        "password": "1234",
         "classes": [10, 10],
         "grades": [90, 85],
-        "token": 5678,
+        "assignments": [{"have sex": 1}],
+        "assignment_weights": [{"have sex": 0.5}],
     },
 }
 
@@ -19,7 +20,7 @@ else:
     print("creation failed,", response.text)
 
 url = "http://localhost:5000/api/student/login"
-login_data = {"name": "John", "password": 1234}
+login_data = {"name": "John", "password": "1234"}
 response = requests.post(url, json=login_data)
 if response.status_code == 200:
     print("Login successful")
