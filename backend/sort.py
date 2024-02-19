@@ -1,5 +1,4 @@
 class Clas:
-
         classGrades = {
         }
         currentAssignments = {
