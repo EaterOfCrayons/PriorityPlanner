@@ -86,6 +86,10 @@ class Clas{
 
 }
 
+function thing() {
+    console.log("monk");
+}
+
 let classes = [];
 let grade = [];
     function changeText() {
