@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Priority Planner</title>
     <link rel="stylesheet" href = "style.css">
+    <script src="getLoginData.js" defer></script>
 </head>
 <body>
     <div class = 'loginBox'>
@@ -32,6 +33,10 @@
             placeholder="Password"
             required
             />
+        </div>
+        <div class="testing">
+            <label id="temp">Temp</label>
+            <button onclick="getUsername()">get username</button>
         </div>
         <br/>   
         <div class = 'submitArea'>
