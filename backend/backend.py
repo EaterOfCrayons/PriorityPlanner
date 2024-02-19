@@ -6,14 +6,15 @@ app = Flask(__name__)
 
 def student_is_valid(input):
     return (
-        isinstance(input["password"], int)
+        isinstance(input["password"], str)
         and isinstance(input["classes"], list)
         and isinstance(input["grades"], list)
-        and isinstance(input["token"], int)
+        and isinstance(input["assignments"], list)
+        and isinstance(input["assignment_weights"], list)
     )
 
 
-# name: name, account: {password: num, classes: [id1, id2], grades: [1, 2], token : num}
+# name: name, account: {password: num, classes: [id1, id2], grades: [1, 2], assignments: [], assignment_weights: []}
 @app.route("/api/student/create-account", methods=["POST"])
 def create_account():
     student = request.get_json()
@@ -76,7 +77,7 @@ def add_grades():
 
 
 # {name: name}
-@app.rotue("/api/student", methods=["GET"])
+@app.route("/api/student", methods=["GET"])
 def get_student():
     input = request.get_json()
     with open("data.json", "r") as file:
