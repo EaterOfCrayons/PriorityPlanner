@@ -1,8 +1,11 @@
 from flask import Flask, request, jsonify
 import json
+from flask_cors import CORS
+
 
 app = Flask(__name__)
-
+app.config["CORS_HEADERS"] = "Content-Type"
+CORS(app, resources={r"/api/*": {"origins": "http://127.0.0.1:5500"}})
 
 def student_is_valid(input):
     return (
@@ -32,8 +35,16 @@ def create_account():
 
 
 # {name: name, password: num}
-@app.route("/api/student/login", methods=["POST"])
+@app.route("/api/student/login", methods=["POST", "OPTIONS"])
 def login():
+    if request.method == "OPTIONS":
+        resp = app.make_default_options_response()
+        headers = resp.headers
+        headers["Access-Control-Allow-Methods"] = "POST"  # or '*' to allow all methods
+        headers["Access-Control-Allow-Headers"] = "Content-Type"
+        headers["Access-Control-Allow-Origin"] = "http://127.0.0.1:5500"
+
+        return resp
     input = request.get_json()
     name = input["name"]
     password = input["password"]
@@ -75,14 +86,11 @@ def add_grades():
     else:
         return "account not found", 404
 
-
-# {name: name}
-@app.route("/api/student", methods=["GET"])
-def get_student():
-    input = request.get_json()
+@app.route("/api/student/<name>", methods=["GET"])
+def get_student(name):
     with open("data.json", "r") as file:
         data = json.load(file)
-    if input["name"] in data:
+    if str(name) in data:
         return jsonify(data[input["name"]]), 200
     else:
         return "account not found", 404
@@ -104,4 +112,4 @@ def new_assignment():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', port=5000, debug=True)
