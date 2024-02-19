@@ -50,25 +50,41 @@ function addAssignment() {
 
 
 function addToTable() {
-    var priority = document.getElementById('priority').value; //replace these with the input from ishans code
-    var assignment = document.getElementById('assignmentInput').value;
-    var dueDate = document.getElementById('duedate').value;
-    var time = document.getElementById('subject').value;
-
-    if (priority && assignment && dueDate && time) {
-        var table = document.querySelector('.schedule');
-        var newRow = table.insertRow(-1); // -1 inserts a new row at the last position
-
-        var priorityCell = newRow.insertCell(0);
-        var assignmentCell = newRow.insertCell(1);
-        var dueDateCell = newRow.insertCell(2);
-        var timeCell = newRow.insertCell(3);
-
-        priorityCell.textContent = priority;
-        assignmentCell.textContent = assignment;
-        dueDateCell.textContent = dueDate;
-        timeCell.textContent = time;
-    } else {
-        alert("Please fill in all the fields.");
+    for (var i = 0; i < 10; i ++) {
+        console.log(assignmentList[i]);
     }
+
+    var table = document.getElementById("schedule");
+    var tbody = document.getElementById("scheduleBody");
+  
+    if (tbody.firstChild != null) {
+        while (tbody.firstChild) {
+            tbody.removeChild(tbody.firstChild);
+          }
+    }
+
+
+    for (var i = 0; i < assignmentList.length; i++) {
+        var priority = document.getElementById('priority').value; //replace these with the input from ishans code
+        var assignment = assignmentList[i];
+        var dueDate = duedateList[i];
+        var time = subjectList[i];
+
+        if (priority && assignment && dueDate && time) {
+            var table = document.getElementById("scheduleBody");
+            var newRow = table.insertRow(-1); // -1 inserts a new row at the last position
+
+            var priorityCell = newRow.insertCell(0);
+            var assignmentCell = newRow.insertCell(1);
+            var dueDateCell = newRow.insertCell(2);
+            var timeCell = newRow.insertCell(3);
+
+            priorityCell.textContent = priority;
+            assignmentCell.textContent = assignment;
+            dueDateCell.textContent = dueDate;
+            timeCell.textContent = time;
+        } else {
+            alert("Please fill in all the fields.");
+        }
+        }
 }
