@@ -3,7 +3,6 @@ import json
 
 app = Flask(__name__)
 
-
 def student_is_valid(input):
     return (
         isinstance(input["password"], str)
