@@ -21,18 +21,15 @@
                     <th>Due-Date</th>
                     <th>Time</th>
                 </tr>
-                <tr>
-                    <td>monkey</td>
-                </tr>
             </table>
         </div>
         <div class = 'left'> 
             <div class = 'assignmentHead'>
-                <h1>Add Assignments:</h1>
+                <h1 style="text-align: center;">Add Assignments:</h1>
             </div>
             <div class="addAssignment">
                 <form onsubmit="return addAssignment()">
-                    <div class = 'assignmentClass'>
+                    <div class = 'assignmentClass' style="text-align: center;">
                         <Label for = 'assignmentInput'>Input Assignment:</Label>
                         <input type = 'text' id = 'assignmentInput' name = 'assignmentInput', placeholder="ex: Picture Lab" required>
                         <br>
@@ -44,7 +41,8 @@
                     </div>
                     <br>
                     <div class = 'assignmentArea'>
-                        <input type="button" name="button" value="Add Assignment" onclick="addAssignment()"/>
+                        <input style="padding: 15px;" type = "button" name="button" value="Add Assignment" onclick="addAssignment()"/>
+                        <input style="padding: 15px; float:right" type="button" name="tablebutton" value="Create Schedule" onclick="addToTable()"/>
                     </div>
                 </form>
             </div>
