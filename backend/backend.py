@@ -87,6 +87,21 @@ def get_student():
     else:
         return "account not found", 404
 
+# {name: name, assignmentName: className, assignmentName: weight}
+@app.route("/api/student/assignments/new", methods=["POST"])
+def new_assignment():
+    input = request.get_json()
+    with open("data.json", "r") as file:
+        data = json.load(file)
+    data[input["name"]]["assignments"].append(input["assignment"])
+    data[input["name"]]["assignment_weights"].append(input["weight"])
+    if input["name"] in data:
+        with open("data.json", "w") as file:
+            json.dump(data, file)
+        return "success", 200
+    else:
+        return "account not found", 404
+
 
 if __name__ == "__main__":
-    app.run(port=5000)
+    app.run(host='0.0.0.0')
