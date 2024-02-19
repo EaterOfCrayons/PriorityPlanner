@@ -12,12 +12,35 @@
             <h1 class = 'classHeader'>Classes</h1>
         </div>
         <div class="addClasses">
-            <form>
-                <Label for = 'classes'>Input Class:</Label>
-                <input type = 'text' id = 'classInput' name = 'classInput', placeholder="ex: Math" required>
+            <form onsubmit="return changeText()">
+                <div class = 'inputClass'>
+                    <Label for = 'classes'>Input Class:</Label>
+                    <input type = 'text' id = 'classInput' name = 'classInput', placeholder="ex: Math" required>
+                </div>
+                <br>
                 <div class = 'submitArea'>
                     <!-- Submit button -->
-                    <input type="submit" name="submit" value="Login"/>
+                    <input type="button" name="button" value="Add Class" onclick="changeText()"/>
+                </div>
+                <div class = 'classStorer'>
+                    <h1 id = 'classLabel'>Classes:</h1>
+                    <script>
+                        function changeText() {
+                            let classes = [];
+                            var txt = document.getElementById('classInput').value;
+                            classes.push(txt);
+                            for (let i = 0; i < classes.length; i++) {
+                                document.getElementById("classLabel").innerHTML += (" " + classes[i]);
+                                console.log(classes[i]);
+                            }
+
+                            document.getElementById('classInput').value = "";
+
+                            return false;
+
+                        }
+
+                    </script>
                 </div>
             </form>
         </div>
