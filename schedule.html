@@ -9,6 +9,46 @@
     <script src="classdata.js" defer></script>
 </head>
 <body>
-
+    <div>
+        <div class = 'classBox'>
+            <h1 class = 'classHeader'>Schedule</h1>
+        </div>
+        <div class = 'right'>
+            <table class = 'schedule'>
+                <tr>
+                    <th>Priority</th>
+                    <th>Assignment</th>
+                    <th>Due-Date</th>
+                    <th>Time</th>
+                </tr>
+                <tr>
+                    <td>monkey</td>
+                </tr>
+            </table>
+        </div>
+        <div class = 'left'> 
+            <div class = 'assignmentHead'>
+                <h1>Add Assignments:</h1>
+            </div>
+            <div class="addAssignment">
+                <form onsubmit="return addAssignment()">
+                    <div class = 'assignmentClass'>
+                        <Label for = 'assignmentInput'>Input Assignment:</Label>
+                        <input type = 'text' id = 'assignmentInput' name = 'assignmentInput', placeholder="ex: Picture Lab" required>
+                        <br>
+                        <Label for = 'duedate'>Input Due-Date:</Label>
+                        <input type = 'date' id = 'duedate' name = 'duedate', placeholder="ex: 1/1/24" required>
+                        <br>
+                        <Label for = 'subject'>Input Subject:</Label>
+                        <input type = 'text' id = 'subject' name = 'subject', placeholder="ex: CSA" required>
+                    </div>
+                    <br>
+                    <div class = 'assignmentArea'>
+                        <input type="button" name="button" value="Add Assignment" onclick="addAssignment()"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

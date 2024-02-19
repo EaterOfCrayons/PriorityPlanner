@@ -22,3 +22,33 @@ let grade = [];
 
     return false;
 }
+
+let assignmentList = [];
+let duedateList = [];
+let subjectList = [];
+
+function addAssignment() {
+    var assignment = document.getElementById('assignmentInput').value;
+    var duedate = document.getElementById('duedate').value;
+    var subject = document.getElementById('subject').value;
+
+    if (assignment.trim() === '' || duedate.trim() === '' || subject.trim() === '') {
+        alert("Please fill out all fields");
+        return false;
+    }
+
+    assignmentList.push(assignment);
+    duedateList.push(duedate);
+    subjectList.push(subject);
+
+    document.getElementById('assignmentInput').value = "";
+    document.getElementById('duedate').value = "";
+    document.getElementById('subject').value = "";
+
+    console.log(assignment + duedate + subject);
+}
+
+
+function addToTable() {
+    
+}
