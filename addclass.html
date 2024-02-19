@@ -12,7 +12,7 @@
             <h1 class = 'classHeader'>Classes</h1>
         </div>
         <div class="addClasses">
-            <form>
+            <form onsubmit="return changeText()">
                 <div class = 'inputClass'>
                     <Label for = 'classes'>Input Class:</Label>
                     <input type = 'text' id = 'classInput' name = 'classInput', placeholder="ex: Math" required>
@@ -28,13 +28,15 @@
                         function changeText() {
                             let classes = [];
                             var txt = document.getElementById('classInput').value;
-                            classes.append(txt);
+                            classes.push(txt);
                             for (let i = 0; i < classes.length; i++) {
-                                document.getElementById("classLabel").innerHTML += classes[i];
+                                document.getElementById("classLabel").innerHTML += (" " + classes[i]);
                                 console.log(classes[i]);
                             }
 
                             document.getElementById('classInput').value = "";
+
+                            return false;
 
                         }
 
