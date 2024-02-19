@@ -20,19 +20,21 @@
                 <br>
                 <div class = 'submitArea'>
                     <!-- Submit button -->
-                    <input type="submit" name="submit" value="Add Class" onclick="changeText()"/>
+                    <input type="button" name="button" value="Add Class" onclick="changeText()"/>
                 </div>
                 <div class = 'classStorer'>
                     <h1 id = 'classLabel'>Classes:</h1>
                     <script>
                         function changeText() {
-                            classes = [];
+                            let classes = [];
                             var txt = document.getElementById('classInput').value;
-                            classes.add(txt);
-                            for (let i = 0; i < length(classes); i++) {
+                            classes.append(txt);
+                            for (let i = 0; i < classes.length; i++) {
                                 document.getElementById("classLabel").innerHTML += classes[i];
-                                System.out.println(classes[i]);
+                                console.log(classes[i]);
                             }
+
+                            document.getElementById('classInput').value = "";
 
                         }
 
