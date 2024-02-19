@@ -50,5 +50,25 @@ function addAssignment() {
 
 
 function addToTable() {
-    
+    var priority = document.getElementById('priority').value; //replace these with the input from ishans code
+    var assignment = document.getElementById('assignmentInput').value;
+    var dueDate = document.getElementById('duedate').value;
+    var time = document.getElementById('subject').value;
+
+    if (priority && assignment && dueDate && time) {
+        var table = document.querySelector('.schedule');
+        var newRow = table.insertRow(-1); // -1 inserts a new row at the last position
+
+        var priorityCell = newRow.insertCell(0);
+        var assignmentCell = newRow.insertCell(1);
+        var dueDateCell = newRow.insertCell(2);
+        var timeCell = newRow.insertCell(3);
+
+        priorityCell.textContent = priority;
+        assignmentCell.textContent = assignment;
+        dueDateCell.textContent = dueDate;
+        timeCell.textContent = time;
+    } else {
+        alert("Please fill in all the fields.");
+    }
 }
