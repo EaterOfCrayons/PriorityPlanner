@@ -55,7 +55,7 @@ class Clas{
     }
        
     isAsending(l, index) {
-        if(index-1 > 0 && index+1<len(list)) {
+        if(index-1 > 0 && index+1<list.length) {
             return l[index-1] < l[index] < l[index+1];
         }
         else if(index == 0){
@@ -67,7 +67,7 @@ class Clas{
     }
        
     insertionSort(arr,anotherArr,thirdArr){
-        for (var i = 1; i<len(arr);i++) {
+        for (var i = 1; i<arr.length;i++) {
             var key = arr[i];
             var key2 = anotherArr[i];
             var thirdKey = thirdArr[i];
@@ -138,15 +138,12 @@ function addAssignment() {
     document.getElementById('duedate').value = "";
     document.getElementById('subject').value = "";
 
-    console.log(assignment + duedate + subject);
 }
 
 
 function addToTable() {
     console.log(cles.getAllSortedScores())
-    for (var i = 0; i < 10; i ++) {
-        console.log(assignmentList[i]);
-    }
+    
 
     var table = document.getElementById("schedule");
     var tbody = document.getElementById("scheduleBody");
