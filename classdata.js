@@ -120,24 +120,28 @@ function changeText() {
 let assignmentList = [];
 let duedateList = [];
 let subjectList = [];
+let priorityList = [];
 let cles = new Clas([],[])
 function addAssignment() {
     var assignment = document.getElementById('assignmentInput').value;
     var duedate = document.getElementById('duedate').value;
     var subject = document.getElementById('subject').value;
+    var priority = document.getElementById('priority').value;
     cles = new Clas(localStorage.getItem("classes").split(","),localStorage.getItem("grade").split(",")[0])
-    if (assignment.trim() === '' || duedate.trim() === '' || subject.trim() === '') {
+    if (assignment.trim() === '' || duedate.trim() === '' || subject.trim() === '' || priority.trim() === '') {
         alert("Please fill out all fields");
         return false;
     }
-    cles.addAssignment(subject,assignment,duedate)
+    cles.addAssignment(subject,assignment,duedate,priority)
     
     assignmentList.push(assignment);
     duedateList.push(duedate);
     subjectList.push(subject);
+    priorityList.push(priority);
     document.getElementById('assignmentInput').value = "";
     document.getElementById('duedate').value = "";
     document.getElementById('subject').value = "";
+    document.getElementById('priority').value = "";
 
 }
 
@@ -157,10 +161,10 @@ function addToTable() {
 
 
     for (var i = 0; i < assignmentList.length; i++) {
-        var priority = document.getElementById('priority').value; //replace these with the input from ishans code
         var assignment = assignmentList[i];
         var dueDate = duedateList[i];
         var time = subjectList[i];
+        var priority = priorityList[i];
 
         if (priority && assignment && dueDate && time) {
             var table = document.getElementById("scheduleBody");
