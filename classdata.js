@@ -1,21 +1,115 @@
-let classes = [];
-let grade = [];
-    function changeText() {
-        var txt = document.getElementById('classInput').value;
-        var grd = document.getElementById('gradeInput').value;
+class Clas{
+    classGrades = {
+    };
+    currentAssignments = {
 
-        if (txt.trim() === '' || grd.trim() === '') {
-            alert("Please enter both class and grade.");
-            return false;
+    };
+    
+
+    //the input gonna be like ["CSA","Pre Calc","Linglish 10 honors"]
+    constructor(classes,grades) {
+        for (var i = 0; i < classes.length;i++) {
+            var course = classes[i];
+            
+            this.classGrades[course] = grades;
+            this.currentAssignments[course] = [];  //is this for the assignments for each class
+            
         }
 
-        classes.push(txt);
-        grade.push(grd);
 
-        if (document.getElementById('classInput').value != null || document.getElementById('gradeInput').value != null) {
-            document.getElementById("classLabel").innerHTML += ("<br>" + txt + ", " + grd);
+            
+    }
+        
+
+    //adds a previous assignment's grade to it (we dont care about the assignments name after its graded)
+    addGradedProject(course, grade){
+        return this.classGrades[course] = (this.classGrades[course] + grade) / 2;
+    }
+
+
+    addAssignment(course, name, dueDate){
+
+        this.currentAssignments[course].append({"name": name, "did": dueDate});
+    } 
+
+    getAllSortedScores() {
+        var scores = [];
+        var names = [];
+        for (const key in this.currentAssignments){
+            var values = this.currentAssignments[key];
+            for (const assignment in values){
+                scores.append([key + assignment["name"], this.classGrades[key] - assignment["did"]]);
+                names.append(assignment["did"]);
+            }
+        }
+            
+        var a = [];
+        var b = [];
+        for (const z in scores) {
+            a.append(z[1]);
+            b.append(z[0]);
+        }
+            
+        a = this.insertionSort(a,b,names);
+        return a
+    }
+       
+    isAsending(l, index) {
+        if(index-1 > 0 && index+1<list.length) {
+            return l[index-1] < l[index] < l[index+1];
+        }
+        else if(index == 0){
+            return l[0] < l[1];
+        }
+        else{
+            return l[index-1] < l[index];
+        }
+    }
+       
+    insertionSort(arr,anotherArr,thirdArr){
+        for (var i = 1; i<arr.length;i++) {
+            var key = arr[i];
+            var key2 = anotherArr[i];
+            var thirdKey = thirdArr[i];
+            j = i-1;
+            while (j >= 0 && key < arr[j]) {
+                arr[j + 1] = arr[j];
+                anotherArr[j+1] = anotherArr[j];
+                thirdArr[j+1] = thirdArr[j];
+                j -= 1;
+            }
+                
+            arr[j + 1] = key;
+            anotherArr[j + 1] = key2;
+            thirdArr[j+1] = thirdKey;
+            return [thirdArr,anotherArr];
+        }
+    }
+        
+           
 
 }
+let classes = [];
+let grade = [];
+function thing() {
+    localStorage.setItem("classes",classes);
+    localStorage.setItem("grade",grade);
+}
+
+function changeText() {
+    var txt = document.getElementById('classInput').value;
+    var grd = document.getElementById('gradeInput').value;
+
+    if (txt.trim() === '' || grd.trim() === '') {
+        alert("Please enter both class and grade.");
+        return false;
+    }
+
+    classes.push(txt);
+    grade.push(grd);
+    if (document.getElementById('classInput').value != null || document.getElementById('gradeInput').value != null) {
+        document.getElementById("classLabel").innerHTML += ("<br>" + txt + ", " + grd);
+    }
 
     document.getElementById('classInput').value = "";
     document.getElementById('gradeInput').value = "";
@@ -26,49 +120,62 @@ let grade = [];
 let assignmentList = [];
 let duedateList = [];
 let subjectList = [];
-
+let cles = new Clas([],[])
 function addAssignment() {
     var assignment = document.getElementById('assignmentInput').value;
     var duedate = document.getElementById('duedate').value;
     var subject = document.getElementById('subject').value;
-
+    
+    cles = new Clas(localStorage.getItem("classes").split(","),localStorage.getItem("grade").split(","))
     if (assignment.trim() === '' || duedate.trim() === '' || subject.trim() === '') {
         alert("Please fill out all fields");
         return false;
     }
-
     assignmentList.push(assignment);
     duedateList.push(duedate);
     subjectList.push(subject);
-
     document.getElementById('assignmentInput').value = "";
     document.getElementById('duedate').value = "";
     document.getElementById('subject').value = "";
 
-    console.log(assignment + duedate + subject);
 }
 
 
 function addToTable() {
-    var priority = document.getElementById('priority').value; //replace these with the input from ishans code
-    var assignment = document.getElementById('assignmentInput').value;
-    var dueDate = document.getElementById('duedate').value;
-    var time = document.getElementById('subject').value;
+    console.log(cles.getAllSortedScores())
+    
 
-    if (priority && assignment && dueDate && time) {
-        var table = document.querySelector('.schedule');
-        var newRow = table.insertRow(-1); // -1 inserts a new row at the last position
+    var table = document.getElementById("schedule");
+    var tbody = document.getElementById("scheduleBody");
+  
+    if (tbody.firstChild != null) {
+        while (tbody.firstChild) {
+            tbody.removeChild(tbody.firstChild);
+          }
+    }
 
-        var priorityCell = newRow.insertCell(0);
-        var assignmentCell = newRow.insertCell(1);
-        var dueDateCell = newRow.insertCell(2);
-        var timeCell = newRow.insertCell(3);
 
-        priorityCell.textContent = priority;
-        assignmentCell.textContent = assignment;
-        dueDateCell.textContent = dueDate;
-        timeCell.textContent = time;
-    } else {
-        alert("Please fill in all the fields.");
+    for (var i = 0; i < assignmentList.length; i++) {
+        var priority = document.getElementById('priority').value; //replace these with the input from ishans code
+        var assignment = assignmentList[i];
+        var dueDate = duedateList[i];
+        var time = subjectList[i];
+
+        if (priority && assignment && dueDate && time) {
+            var table = document.getElementById("scheduleBody");
+            var newRow = table.insertRow(-1); // -1 inserts a new row at the last position
+
+            var priorityCell = newRow.insertCell(0);
+            var assignmentCell = newRow.insertCell(1);
+            var dueDateCell = newRow.insertCell(2);
+            var timeCell = newRow.insertCell(3);
+
+            priorityCell.textContent = priority;
+            assignmentCell.textContent = assignment;
+            dueDateCell.textContent = dueDate;
+            timeCell.textContent = time;
+        } else {
+            alert("Please fill in all the fields.");
+        }
     }
 }

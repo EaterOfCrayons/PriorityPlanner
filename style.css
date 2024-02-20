@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Donegal+One&display=swap');
 
 .donegal-one-regular {
@@ -50,7 +49,7 @@ input[type = submit] {
 
 .registerButton {
     font-family: "Donegal One";
-    color: #C55A11;
+    color: #FFC000;
 }
 
 .username {
@@ -70,8 +69,8 @@ input[type = submit] {
 }
 
 .classBox thead tr {
-    background-color: #FFC000;
-    color: #C55A11;
+    background-color: #C55A11;
+    color: #FFC000;
     text-align: left;
     font-weight: bold;
 }
@@ -182,8 +181,8 @@ input[type = submit] {
   
   /* Change the color of links on hover */
   .topnav a:hover {
-    background-color: #fffcdd;
-    color: black;
+    background-color: #000000;
+    color: fffcdd;
   }
   
   /* Add a color to the active/current link */
@@ -215,6 +214,14 @@ input[type = submit] {
     font-family: "Donegal One";
   }
 
+  .about {
+    font-family: "Donegal One";
+    text-align: center;
+    color: white;
+    display: flex;
+    
+  }
+
   .addAssignment {
     padding: 15px 15px;
     font-family: "Donegal One";
@@ -228,11 +235,14 @@ input[type = submit] {
   }
 
   .schedule th {
+    text-align: center;
+    border: 3px solid #000;
     font-weight: bold;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
   }
 
   .schedule td {
-    border: 1px solid #000;
+    border: 3px solid #000;
     text-align: center;
   }
-
