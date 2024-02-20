@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Priority Planner</title>
     <link rel="stylesheet" href = "style.css">
+    <script src="storeData.js"></script>
+    <script src="logIn.js"></script>
     
 </head>
 <body>
@@ -16,7 +18,6 @@
         <div>
             <h1 class = 'loginHeader'>Login</h1>
         </div>
-        <!-- <form action = 'getLoginData.js' method="POST"> -->
         <div class = "userLogin">
             <label for="username">Username:</label>
             <input
@@ -41,12 +42,15 @@
         <br/>   
         <div class = 'submitArea'>
         <!-- Submit button -->
-        <button onclick="convertToJson()">LOGIN</button>
+        <button onclick="login()">LOGIN</button>
         <!-- Link to swap to the register page -->
         <a class = "registerButton" href="register.html">No Account? Register Here.</a>
         </div>
-        </form>
+        <div class="output">
+            <label id="outputLabel">Output</label>
+        </div>
+
     </div>
-    <script src="getLoginData.js" defer></script>
+    
 </body>
 </html>
