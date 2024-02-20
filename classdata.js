@@ -43,8 +43,8 @@ class Clas{
             }
         }
             
-        a = [];
-        b = [];
+        var a = [];
+        var b = [];
         for (const z in scores) {
             a.append(z[1]);
             b.append(z[0]);
@@ -68,9 +68,9 @@ class Clas{
        
     insertionSort(arr,anotherArr,thirdArr){
         for (var i = 1; i<len(arr);i++) {
-            key = arr[i];
-            key2 = anotherArr[i];
-            thirdKey = thirdArr[i];
+            var key = arr[i];
+            var key2 = anotherArr[i];
+            var thirdKey = thirdArr[i];
             j = i-1;
             while (j >= 0 && key < arr[j]) {
                 arr[j + 1] = arr[j];
@@ -81,7 +81,7 @@ class Clas{
                 
             arr[j + 1] = key;
             anotherArr[j + 1] = key2;
-            thirdArr[j+1] = key3;
+            thirdArr[j+1] = thirdKey;
             return [thirdArr,anotherArr];
         }
     }
