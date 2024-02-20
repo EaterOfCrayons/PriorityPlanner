@@ -37,14 +37,14 @@ class Clas{
         for (const [key, values] of Object.entries(this.currentAssignments)){
             for (var i = 0; i< values.length;i++){
                 var assignment = values[i]
-                scores.push([key +" "+ assignment["name"], this.classGrades[key] - assignment["did"]]);
-                names.push(assignment["did"]);
+                scores.push([key +" "+ assignment["name"], Number(this.classGrades[key]) - assignment["did"]]);
+                names.push(assignment["name"]);
             }
         }
-            
+        console.log(scores)
+        console.log(names)
         var a = [];
         var b = [];
-        console.log(scores)
         for (var i = 0; i<scores.length;i++) {
             var z = scores[i];
             a.push(z[1]);
@@ -125,8 +125,7 @@ function addAssignment() {
     var assignment = document.getElementById('assignmentInput').value;
     var duedate = document.getElementById('duedate').value;
     var subject = document.getElementById('subject').value;
-    
-    cles = new Clas(localStorage.getItem("classes").split(","),localStorage.getItem("grade").split(","))
+    cles = new Clas(localStorage.getItem("classes").split(","),localStorage.getItem("grade").split(",")[0])
     if (assignment.trim() === '' || duedate.trim() === '' || subject.trim() === '') {
         alert("Please fill out all fields");
         return false;
