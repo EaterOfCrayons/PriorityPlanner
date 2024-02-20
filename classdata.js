@@ -9,10 +9,14 @@ class Clas{
     //the input gonna be like ["CSA","Pre Calc","Linglish 10 honors"]
     constructor(classes,grades) {
         for (var i = 0; i < classes.length;i++) {
-            course = classes[i];
+            var course = classes[i];
+            
             this.classGrades[course] = grades;
             this.currentAssignments[course] = [];  //is this for the assignments for each class
+            
         }
+
+
             
     }
         
@@ -24,6 +28,7 @@ class Clas{
 
 
     addAssignment(course, name, dueDate){
+
         this.currentAssignments[course].append({"name": name, "did": dueDate});
     } 
 
@@ -31,7 +36,7 @@ class Clas{
         var scores = [];
         var names = [];
         for (const key in this.currentAssignments){
-            values = this.currentAssignments[key];
+            var values = this.currentAssignments[key];
             for (const assignment in values){
                 scores.append([key + assignment["name"], this.classGrades[key] - assignment["did"]]);
                 names.append(assignment["did"]);
@@ -84,16 +89,14 @@ class Clas{
            
 
 }
-cles = 0;
-function thing() {
-    console.log("monk");
-    cles = Clas(classes,grade)
-}
-
 let classes = [];
 let grade = [];
+function thing() {
+    localStorage.setItem("classes",classes);
+    localStorage.setItem("grade",grade);
+}
+
 function changeText() {
-    console.log("here");
     var txt = document.getElementById('classInput').value;
     var grd = document.getElementById('gradeInput').value;
 
@@ -104,7 +107,6 @@ function changeText() {
 
     classes.push(txt);
     grade.push(grd);
-
     if (document.getElementById('classInput').value != null || document.getElementById('gradeInput').value != null) {
         document.getElementById("classLabel").innerHTML += ("<br>" + txt + ", " + grd);
     }
@@ -118,21 +120,20 @@ function changeText() {
 let assignmentList = [];
 let duedateList = [];
 let subjectList = [];
-
+let cles = new Clas([],[])
 function addAssignment() {
     var assignment = document.getElementById('assignmentInput').value;
     var duedate = document.getElementById('duedate').value;
     var subject = document.getElementById('subject').value;
-
+    
+    cles = new Clas(localStorage.getItem("classes").split(","),localStorage.getItem("grade").split(","))
     if (assignment.trim() === '' || duedate.trim() === '' || subject.trim() === '') {
         alert("Please fill out all fields");
         return false;
     }
-
     assignmentList.push(assignment);
     duedateList.push(duedate);
     subjectList.push(subject);
-
     document.getElementById('assignmentInput').value = "";
     document.getElementById('duedate').value = "";
     document.getElementById('subject').value = "";
@@ -142,6 +143,7 @@ function addAssignment() {
 
 
 function addToTable() {
+    console.log(cles.getAllSortedScores())
     for (var i = 0; i < 10; i ++) {
         console.log(assignmentList[i]);
     }
@@ -178,5 +180,5 @@ function addToTable() {
         } else {
             alert("Please fill in all the fields.");
         }
-        }
+    }
 }
