@@ -16,40 +16,40 @@ class Clas{
             
         }
 
-
             
     }
         
 
     //adds a previous assignment's grade to it (we dont care about the assignments name after its graded)
     addGradedProject(course, grade){
-        return this.classGrades[course] = (this.classGrades[course] + grade) / 2;
+        this.classGrades[course] = (this.classGrades[course] + grade) / 2;
     }
 
 
     addAssignment(course, name, dueDate){
 
-        this.currentAssignments[course].append({"name": name, "did": dueDate});
+        this.currentAssignments[course].push({"name": name, "did": dueDate});
     } 
 
-    getAllSortedScores() {
+    getAllSortedScores() {        
         var scores = [];
         var names = [];
-        for (const key in this.currentAssignments){
-            var values = this.currentAssignments[key];
-            for (const assignment in values){
-                scores.append([key + assignment["name"], this.classGrades[key] - assignment["did"]]);
-                names.append(assignment["did"]);
+        for (const [key, values] of Object.entries(this.currentAssignments)){
+            for (var i = 0; i< values.length;i++){
+                var assignment = values[i]
+                scores.push([key +" "+ assignment["name"], this.classGrades[key] - assignment["did"]]);
+                names.push(assignment["did"]);
             }
         }
             
         var a = [];
         var b = [];
-        for (const z in scores) {
-            a.append(z[1]);
-            b.append(z[0]);
+        console.log(scores)
+        for (var i = 0; i<scores.length;i++) {
+            var z = scores[i];
+            a.push(z[1]);
+            b.push(z[0]);
         }
-            
         a = this.insertionSort(a,b,names);
         return a
     }
@@ -131,6 +131,8 @@ function addAssignment() {
         alert("Please fill out all fields");
         return false;
     }
+    cles.addAssignment(subject,assignment,duedate)
+    
     assignmentList.push(assignment);
     duedateList.push(duedate);
     subjectList.push(subject);
@@ -142,9 +144,9 @@ function addAssignment() {
 
 
 function addToTable() {
-    console.log(cles.getAllSortedScores())
-    
 
+    x = (cles.getAllSortedScores())    
+    console.log(x)
     var table = document.getElementById("schedule");
     var tbody = document.getElementById("scheduleBody");
   
