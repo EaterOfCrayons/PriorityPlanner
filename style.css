@@ -210,6 +210,14 @@ input[type = submit] {
     font-family: "Donegal One";
   }
 
+  .about {
+    font-family: "Donegal One";
+    text-align: center;
+    color: white;
+    display: flex;
+    
+  }
+
   .addAssignment {
     padding: 15px 15px;
     font-family: "Donegal One";
