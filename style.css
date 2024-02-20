@@ -164,7 +164,7 @@ input[type = submit] {
 
 /* Add a black background color to the top navigation */
 .topnav {
-    background-color: #BFBFBF;
+    background-color: #777474;
     overflow: hidden;
   }
   
@@ -172,7 +172,7 @@ input[type = submit] {
   .topnav a {
     
     float: left;
-    color: #f2f2f2;
+    color: #ffffff;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -181,13 +181,13 @@ input[type = submit] {
   
   /* Change the color of links on hover */
   .topnav a:hover {
-    background-color: #000000;
+    background-color: #FFC000;
     color: fffcdd;
   }
   
   /* Add a color to the active/current link */
   .topnav a.active {
-    background-color: #FFC000;
+    background-color: #C55A11;
     color: white;
   }
 
@@ -219,7 +219,20 @@ input[type = submit] {
     text-align: center;
     color: white;
     display: flex;
-    
+    flex-direction: column;
+    width: 98.6%;
+    font-size: 50px;
+    padding: 10px;
+    background-color: grey;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+  }
+
+  .logo {
+    font-family: "Donegal One";
+    text-align: center;
+    margin: auto;
+    width: 50%;
   }
 
   .addAssignment {
