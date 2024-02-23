@@ -117,6 +117,7 @@ function changeText() {
 let assignmentList = [];
 let duedateList = [];
 let subjectList = [];
+let priorityList = [];
 let cles = new Clas([],[])
 document.addEventListener('DOMContentLoaded', function() {
     // Your code here
@@ -132,14 +133,16 @@ function addAssignment() {
         alert("Please fill out all fields");
         return false;
     }
-    cles.addAssignment(subject,assignment,duedate)
+    cles.addAssignment(subject,assignment,duedate,priority)
     
     assignmentList.push(assignment);
     duedateList.push(duedate);
     subjectList.push(subject);
+    priorityList.push(priority);
     document.getElementById('assignmentInput').value = "";
     document.getElementById('duedate').value = "";
     document.getElementById('subject').value = "";
+    document.getElementById('priority').value = "";
 
 }
 
@@ -157,10 +160,11 @@ function addToTable() {
           }
     }
     for (var i = 0; i < assignmentList.length; i++) {
-        var priority = i+1;
+        var priority = document.getElementById('priority').value; //replace these with the input from ishans code
         var assignment = assignmentList[i];
         var dueDate = duedateList[i];
         var time = subjectList[i];
+        var priority = priorityList[i];
 
         if (priority && assignment && dueDate && time) {
             var table = document.getElementById("scheduleBody");
