@@ -27,31 +27,25 @@ class Clas{
 
 
     addAssignment(course, name, dueDate){
-
         this.currentAssignments[course].push({"name": name, "did": dueDate});
     } 
 
     getAllSortedScores() {        
-        var scores = [];
-        var names = [];
+        
+        var name = [];
+        var did = [];
+        var score = [];
+        var subject = []
         for (const [key, values] of Object.entries(this.currentAssignments)){
             for (var i = 0; i< values.length;i++){
                 var assignment = values[i]
-                scores.push([key +" "+ assignment["name"], Number(this.classGrades[key]) - assignment["did"]]);
-                names.push(assignment["name"]);
+                name.push(assignment["name"])
+                score.push(-Number(this.classGrades[key]) + assignment["did"])
+                did.push(assignment["did"]);
+                subject.push(key)
             }
         }
-        console.log(scores)
-        console.log(names)
-        var a = [];
-        var b = [];
-        for (var i = 0; i<scores.length;i++) {
-            var z = scores[i];
-            a.push(z[1]);
-            b.push(z[0]);
-        }
-        a = this.insertionSort(a,b,names);
-        return a
+        return this.insertionSort(score,name,did,subject);
     }
        
     isAsending(l, index) {
@@ -66,24 +60,27 @@ class Clas{
         }
     }
        
-    insertionSort(arr,anotherArr,thirdArr){
+    insertionSort(arr,anotherArr,thirdArr,c){
         for (var i = 1; i<arr.length;i++) {
             var key = arr[i];
             var key2 = anotherArr[i];
-            var thirdKey = thirdArr[i];
-            j = i-1;
+            var key3 = thirdArr[i];
+            var key4 = c[i];
+            var j = i-1;
             while (j >= 0 && key < arr[j]) {
                 arr[j + 1] = arr[j];
                 anotherArr[j+1] = anotherArr[j];
-                thirdArr[j+1] = thirdArr[j];
+                thirdArr[j+1] = thirdArr[j]
+                c[j+1] = c[j]
                 j -= 1;
             }
                 
             arr[j + 1] = key;
             anotherArr[j + 1] = key2;
-            thirdArr[j+1] = thirdKey;
-            return [thirdArr,anotherArr];
+            thirdArr[j+1] = key3;
+            c[j+2] = key4;
         }
+        return [anotherArr,thirdArr,c];
     }
         
            
@@ -121,11 +118,16 @@ let assignmentList = [];
 let duedateList = [];
 let subjectList = [];
 let cles = new Clas([],[])
+document.addEventListener('DOMContentLoaded', function() {
+    // Your code here
+    console.log('DOM fully loaded and parsed');
+    cles = new Clas(localStorage.getItem("classes").split(","),localStorage.getItem("grade").split(",")[0])
+  });
 function addAssignment() {
     var assignment = document.getElementById('assignmentInput').value;
     var duedate = document.getElementById('duedate').value;
     var subject = document.getElementById('subject').value;
-    cles = new Clas(localStorage.getItem("classes").split(","),localStorage.getItem("grade").split(",")[0])
+   
     if (assignment.trim() === '' || duedate.trim() === '' || subject.trim() === '') {
         alert("Please fill out all fields");
         return false;
@@ -154,10 +156,8 @@ function addToTable() {
             tbody.removeChild(tbody.firstChild);
           }
     }
-
-
     for (var i = 0; i < assignmentList.length; i++) {
-        var priority = document.getElementById('priority').value; //replace these with the input from ishans code
+        var priority = i+1;
         var assignment = assignmentList[i];
         var dueDate = duedateList[i];
         var time = subjectList[i];
